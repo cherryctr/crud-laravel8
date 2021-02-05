@@ -9,52 +9,52 @@
                     </svg>
                 </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg y">
-                	 <button wire:click="showModal()" class="rounded bg-green-500 hover:bg-green-700 py-2 px-4 text-white mb-3">
-                	 	
-               	  Create  </button>
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="padding: 20px">
+                   <button wire:click="showModal()" class="rounded bg-green-500 hover:bg-green-700 py-2 px-4 text-white mb-3">
+                    
+                  Create  </button>
 
-               	  		@if($isOpen)
-                	 	  @include('livewire.create')
+                      @if($isOpen)
+                      @include('livewire.create')
                         @endif
 
                         @if(session()->has('info'))
                           <div class="bg-green-600 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
-                          	<div>
-                          		<h1 class="text-white font-bold">{{ session('info')}}</h1>
-                          	</div>
+                            <div>
+                              <h1 class="text-white font-bold">{{ session('info')}}</h1>
+                            </div>
                           </div>
-                	 	  
+                      
                         @endif 
 
                        <!--  @if(session()->has('delete'))
-                	 	  <h1>{{ session('delete')}}</h1>
+                      <h1>{{ session('delete')}}</h1>
                         @endif  -->
                    <table class="table-fixed w-full">
-                   		<thead class="bg-blue-500">
-                   			<tr>
-                   				<th class="px-4 py-2 text-white">No</th>
-                   				<th class="px-4 py-2 text-white">Title</th>
-                   				<th class="px-4 py-2 text-white">Description</th>
-                   				<th class="px-4 py-2 text-white">Action</th>
-                   			</tr>
-                   			
-                   		</thead>
-                   		<tbody>
-                   			<?php $no = 0;?>
-                   			@foreach($posts as $post)
-                   			<?php $no++ ;?>
-                   			<tr>
-                   				<td>{{ $no }}</td>
-                   				<td>{{ $post->title }}</td>
-                   				<td>{{ $post->description }}</td>
-                   				<td>
-								    <button wire:click="edit({{ $post->id }})" class="rounded bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white"> Edit </button>
-								     <button wire:click.prevent="delete({{ $post->id }})" class="rounded bg-red-500 hover:bg-red-700 py-2 px-4 text-white"> Delete </button>
-                   				</td>
-                   			</tr>
-                   			@endforeach
-                   		</tbody>
+                      <thead class="bg-blue-500">
+                        <tr>
+                          <th class="px-4 py-2 text-white">No</th>
+                          <th class="px-4 py-2 text-white">Title</th>
+                          <th class="px-4 py-2 text-white">Description</th>
+                          <th class="px-4 py-2 text-white">Action</th>
+                        </tr>
+                        
+                      </thead>
+                      <tbody>
+                        <?php $no = 0;?>
+                        @foreach($posts as $post)
+                        <?php $no++ ;?>
+                        <tr>
+                          <td class="text-center" style="margin-top: 10px">{{ $no }}</td>
+                          <td class="text-center">{{ $post->title }}</td>
+                          <td class="text-center">{{ $post->description }}</td>
+                          <td class="text-center">
+                    <button wire:click="edit({{ $post->id }})" class="rounded bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white" style="margin: 13px;"> Edit </button>
+                     <button wire:click.prevent="delete({{ $post->id }})" class="rounded bg-red-500 hover:bg-red-700 py-2 px-4 text-white"> Delete </button>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
                    </table>
                 </div>
 
